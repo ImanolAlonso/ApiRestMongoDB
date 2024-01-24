@@ -7,6 +7,10 @@ import io
 
 mongo = PyMongo(app)
 
+@app.route('/')
+def mostrar():
+    return "Hola"
+
 @app.route('/registro', methods=['POST'])
 def crear_producto():
     nombreProducto = request.form.get('nombreProducto')
