@@ -1,0 +1,18 @@
+{
+    "version":2,
+    "builds":[
+        {
+            "src": "*.py",
+            "use": "@vercel/python"
+        }
+    ],
+    "routes":[
+        {
+            "src":"(.*)",
+            "dest":"app.py"
+        }
+    ],
+    "env": {
+        "MONGODB_HOST": "daw2.gqzn8s6.mongodb.net"
+    }
+}
