@@ -7,23 +7,6 @@ import io
 
 mongo = PyMongo(app)
 
-@app.route('/')
-def mostrar():
-    productos = mongo.db.products.find()
-    productos_converted = []
-
-    for producto in productos:
-        producto['_id'] = str(producto['_id'])
-
-        # Filtrar los campos para excluir el binario
-        producto_filtered = {key: value for key, value in producto.items() if not isinstance(value, bytes)}
-        
-        productos_converted.append(producto_filtered)
-
-    response = json_util.dumps(productos_converted)
-
-    return Response(response, mimetype='application/json')
-
 @app.route('/registro', methods=['POST'])
 def crear_producto():
     nombreProducto = request.form.get('nombreProducto')
